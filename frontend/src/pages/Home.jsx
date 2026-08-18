@@ -3,6 +3,7 @@ import { Form } from "../components/Form"
 import { Table } from "../components/Table"
 import { SearchBar } from "../components/ui/SearchBar"
 import { PageControl } from "../components/PageControl"
+import { ErrorPage } from "./ErrorPage"
 import { getData, deleteUser } from "../services/userService"
 
 export const Home = () => {
@@ -16,6 +17,7 @@ export const Home = () => {
     const [disabled, setDisabled] = useState(false)
     const [page, setPage] = useState(1)
     const [limit, setLimit] = useState(10)
+    const [serverError, setServerError] = useState(false)
 
     async function carregarDados(term) {
         const dados = await getData({ term, page, limit })
@@ -74,6 +76,27 @@ export const Home = () => {
         const nextPage = page + 1
         const data = await getData({ term: inputValue, page: nextPage, limit: limit })
         return data.length
+    }
+
+    async function serverIsOk() {
+        try {
+            let resposta = await fetch(`https://crud-simples-dzeq.onrender.com/health`)
+            return resposta.ok
+        } catch (error) {
+            return false
+        }
+    }
+
+    useEffect(() => {
+        serverIsOk().then((ok) => {
+            if (!ok) {
+                setServerError(true)
+            }
+        })
+    }, [])
+
+    if (serverError) {
+        return <ErrorPage />
     }
 
     return (
