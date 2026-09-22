@@ -13,7 +13,7 @@ Aplicação **full stack** para gerenciamento de usuários, com foco em integra�
 ## Acesse o projeto
 
 🔗 **Aplicação online:** https://user-management-crud.gsilva12401321.workers.dev/
-🔗 **API:** https://crud-simples-dzeq.onrender.com
+🔗 **API:** https://usermanagementcrud-al7wnwcf.b4a.run
 
 > Projeto público — não requer autenticação.
 
@@ -84,7 +84,7 @@ A aplicação utiliza uma arquitetura desacoplada, com frontend e backend indepe
 ### Deploy
 
 * Cloudflare Pages
-* Render
+* Back4App
 
 ---
 
