@@ -1,4 +1,4 @@
-const url = `https://usermanagementcrud-al7wnwcf.b4a.run`
+const url = `https://onest-crud-copia.onrender.com`
 
 export async function getData({ term, page, limit }) {
     const response = await fetch(`${url}/search?term=${encodeURIComponent(term ?? "")}&page=${page - 1}&limit=${limit}`)
